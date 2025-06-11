@@ -4,6 +4,11 @@ This is a simple task management application built with **Ruby on Rails**, runni
 
 ---
 
+## 🎥 Screenshots
+![image](https://github.com/user-attachments/assets/eb35d779-3148-41b5-b522-c0363eeb427b)
+![image](https://github.com/user-attachments/assets/8508f17b-7e2d-45de-9271-e66a0b0b52c0)
+![image](https://github.com/user-attachments/assets/f4620a29-1e51-4055-b171-1fa917cb2f0c)
+
 ## 🚀 Features
 
 - ✅ CRUD for Lists and Tasks
