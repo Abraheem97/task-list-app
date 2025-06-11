@@ -11,5 +11,14 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
+  <% if @list.tasks.any? %>
+    <hr>
+    <h5 class="mt-4">Add First Task</h5>
+
+    <%= form.fields_for :tasks do |task_form| %>
+      <%= render "tasks/nested_form", form: task_form %>
+    <% end %>
+  <% end %>
+
   <%= form.submit class: "btn btn-primary" %>
 <% end %>

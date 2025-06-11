@@ -20,6 +20,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.tasks.build
   end
 
   def create
@@ -57,6 +58,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :description)
+  params.require(:list).permit(:title, :description, tasks_attributes: [:title, :description, :priority, :completed])
   end
 end

@@ -1,6 +1,5 @@
 <div class="container mt-4">
 
-  <!-- Breadcrumb -->
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -37,8 +36,14 @@
     <%= link_to "Incomplete", list_path(@list, filter: 'incomplete'), class: "btn btn-outline-warning #{@filter == 'incomplete' ? 'active' : ''}" %>
   </div>
 
-  <% @tasks.each do |task| %>
-    <%= render partial: "tasks/task_card", locals: { task: task, list: @list } %>
+  <% if @tasks.any? %>
+    <% @tasks.each do |task| %>
+      <%= render partial: "tasks/task_card", locals: { task: task, list: @list } %>
+    <% end %>
+  <% else %>
+    <div class="alert alert-info">
+      No tasks found
+    </div>
   <% end %>
 
 </div>
