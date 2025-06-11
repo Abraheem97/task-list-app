@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :list, counter_cache: true
 
   validates :title, presence: true
 
-  enum priority: { low: 0, medium: 1, high: 2 }
+  enum :priority, { low: 0, medium: 1, high: 2 }
 
   before_validation :normalize_title
   before_create :set_position

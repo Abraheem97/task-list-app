@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :set_list
   before_action :set_task, only: %i[edit update destroy]
@@ -6,20 +8,20 @@ class TasksController < ApplicationController
     @task = @list.tasks.build
   end
 
+  def edit; end
+
   def create
     @task = @list.tasks.build(task_params)
     if @task.save
-      redirect_to list_path(@list), notice: "Task was successfully created."
+      redirect_to list_path(@list), notice: 'Task was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
-
   def update
     if @task.update(task_params)
-      redirect_to list_path(@list), notice: "Task was successfully updated."
+      redirect_to list_path(@list), notice: 'Task was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -27,7 +29,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to list_path(@list), notice: "Task was successfully deleted."
+    redirect_to list_path(@list), notice: 'Task was successfully deleted.'
   end
 
   private

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class List < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
@@ -21,9 +23,9 @@ class List < ApplicationRecord
   end
 
   def ensure_no_incomplete_tasks
-    if tasks.incomplete.any?
-      errors.add(:base, "Cannot delete list with incomplete tasks")
-      throw(:abort)
-    end
+    return unless tasks.incomplete.any?
+
+    errors.add(:base, 'Cannot delete list with incomplete tasks')
+    throw(:abort)
   end
 end

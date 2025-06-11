@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def bootstrap_class_for(flash_type)
     case flash_type.to_sym
     when :notice
-      "success"
+      'success'
     when :alert
-      "danger"
+      'danger'
     else
-      "info"
+      'info'
     end
   end
 end

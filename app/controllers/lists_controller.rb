@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy]
 
@@ -6,11 +8,11 @@ class ListsController < ApplicationController
   end
 
   def show
-    @filter = params[:filter] || "all"
+    @filter = params[:filter] || 'all'
     @tasks = case @filter
-             when "completed"
+             when 'completed'
                @list.tasks.completed
-             when "incomplete"
+             when 'incomplete'
                @list.tasks.incomplete
              else
                @list.tasks
@@ -23,20 +25,20 @@ class ListsController < ApplicationController
     @list.tasks.build
   end
 
+  def edit; end
+
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to @list, notice: "List was successfully created."
+      redirect_to @list, notice: 'List was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
-
   def update
     if @list.update(list_params)
-      redirect_to @list, notice: "List was successfully updated."
+      redirect_to @list, notice: 'List was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -58,6 +60,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-  params.require(:list).permit(:title, :description, tasks_attributes: [:title, :description, :priority, :completed])
+    params.require(:list).permit(:title, :description, tasks_attributes: %i[title description priority completed])
   end
 end
