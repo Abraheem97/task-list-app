@@ -15,6 +15,7 @@ class ListsController < ApplicationController
              else
                @list.tasks
              end
+    @tasks = @tasks.order(:position)
   end
 
   def new
