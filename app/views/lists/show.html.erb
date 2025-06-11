@@ -32,9 +32,9 @@
   <%= link_to "Add Task", new_list_task_path(@list), class: "btn btn-primary mb-3" %>
 
   <div class="btn-group mb-3" role="group">
-    <%= link_to "All", list_path(@list, filter: "all"), class: "btn btn-outline-secondary" %>
-    <%= link_to "Completed", list_path(@list, filter: "completed"), class: "btn btn-outline-success" %>
-    <%= link_to "Incomplete", list_path(@list, filter: "incomplete"), class: "btn btn-outline-warning" %>
+    <%= link_to "All", list_path(@list), class: "btn btn-outline-primary #{@filter == 'all' ? 'active' : ''}" %>
+    <%= link_to "Completed", list_path(@list, filter: 'completed'), class: "btn btn-outline-success #{@filter == 'completed' ? 'active' : ''}" %>
+    <%= link_to "Incomplete", list_path(@list, filter: 'incomplete'), class: "btn btn-outline-warning #{@filter == 'incomplete' ? 'active' : ''}" %>
   </div>
 
   <% @tasks.each do |task| %>

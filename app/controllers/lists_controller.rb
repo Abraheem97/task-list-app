@@ -42,8 +42,12 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
-    redirect_to lists_path, notice: "List was successfully deleted."
+    @list = List.find(params[:id])
+    if @list.destroy
+      redirect_to lists_path, notice: 'List was successfully deleted.'
+    else
+      redirect_to @list, alert: @list.errors.full_messages.to_sentence
+    end
   end
 
   private
