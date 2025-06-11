@@ -16,7 +16,7 @@
   <p><%= @list.description %></p>
 
   <p class="text-muted">
-    <%= pluralize(@list.tasks.completed.count, "task") %> completed out of <%= @list.tasks.count %>
+    <%= pluralize(@list.tasks.completed.count, "task") %> completed out of <%= @list.tasks_count %>
   </p>
 
   <strong>Progress:</strong>
