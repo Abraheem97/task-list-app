@@ -1,0 +1,17 @@
+<div class="card mb-2">
+  <div class="card-body d-flex justify-content-between align-items-center">
+    <div>
+      <h5 class="card-title <%= "text-decoration-line-through text-muted" if task.completed %>">
+        <%= task.title %>
+      </h5>
+      <p class="card-text"><%= task.description %></p>
+    </div>
+
+    <div class="d-flex gap-2">
+      <%= link_to "Edit", edit_list_task_path(@list, task), class: "btn btn-outline-secondary btn-sm" %>
+      <%= button_to "Delete", list_task_path(@list, task), method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "btn btn-outline-danger btn-sm" %>
+    </div>
+  </div>
+</div>

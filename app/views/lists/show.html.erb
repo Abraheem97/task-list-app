@@ -1,0 +1,44 @@
+<div class="container mt-4">
+
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to "All Lists", lists_path %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= @list.title %>
+      </li>
+    </ol>
+  </nav>
+
+  <h2><%= @list.title %></h2>
+  <p><%= @list.description %></p>
+
+  <p class="text-muted">
+    <%= pluralize(@list.tasks.completed.count, "task") %> completed out of <%= @list.tasks.count %>
+  </p>
+
+  <strong>Progress:</strong>
+  <div class="progress mb-3">
+    <div class="progress-bar" role="progressbar"
+         style="width: <%= @list.percent_complete %>%;" 
+         aria-valuenow="<%= @list.percent_complete %>" 
+         aria-valuemin="0" aria-valuemax="100">
+      <%= @list.percent_complete %>%
+    </div>
+  </div>
+
+  <%= link_to "Add Task", new_list_task_path(@list), class: "btn btn-primary mb-3" %>
+
+  <div class="btn-group mb-3" role="group">
+    <%= link_to "All", list_path(@list, filter: "all"), class: "btn btn-outline-secondary" %>
+    <%= link_to "Completed", list_path(@list, filter: "completed"), class: "btn btn-outline-success" %>
+    <%= link_to "Incomplete", list_path(@list, filter: "incomplete"), class: "btn btn-outline-warning" %>
+  </div>
+
+  <% @tasks.each do |task| %>
+    <%= render partial: "tasks/task_card", locals: { task: task, list: @list } %>
+  <% end %>
+
+</div>
