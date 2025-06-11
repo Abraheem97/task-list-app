@@ -1,4 +1,4 @@
-<div class="card mb-2">
+<div class="card mb-2 border-<%= priority_border_class(task.priority) %>">
   <div class="card-body d-flex justify-content-between align-items-center">
     <div>
       <h5 class="card-title <%= "text-decoration-line-through text-muted" if task.completed %>">
